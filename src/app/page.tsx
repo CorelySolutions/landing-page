@@ -229,65 +229,70 @@ function WaitlistForm() {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#0a0a0a] pb-24 pt-32">
-      {/* Radial glow — subtle, not overwhelming */}
+    <section className="relative overflow-hidden bg-[#0a0a0a] pb-24 pt-28">
+      {/* Radial glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[360px] w-[600px] rounded-full opacity-[0.12]"
-        style={{ background: 'radial-gradient(ellipse at center, #3b82f6 0%, transparent 70%)' }}
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[360px] w-[600px] rounded-full opacity-[0.10]"
+        style={{ background: 'radial-gradient(ellipse at center, #2563eb 0%, transparent 70%)' }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <Badge
-          variant="outline"
-          className="mb-6 border-[#1e293b] bg-white/[0.04] text-[#94a3b8] text-xs font-normal px-3 py-1"
-        >
-          <Zap className="mr-1.5 h-3 w-3 text-[#3b82f6]" />
-          Early Access · Waitlist now open
-        </Badge>
-
-        <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
-          Run the ops.{' '}
-          <br className="hidden sm:block" />
-          <span className="text-[#3b82f6]">Not spreadsheets.</span>
-        </h1>
-
-        <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#94a3b8] sm:text-lg">
-          Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
-        </p>
-
-        {/* Module pills */}
-        <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2">
-          {['📦 Inventory', '🚚 Fleet', '📋 Projects', '🏗 Production', '⚓ Dock', '👥 Teams'].map((pill) => (
-            <span
-              key={pill}
-              className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
+      <div className="relative mx-auto max-w-6xl px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left — text */}
+          <div>
+            <Badge
+              variant="outline"
+              className="mb-6 border-[#1e293b] bg-white/[0.04] text-[#94a3b8] text-xs font-normal px-3 py-1"
             >
-              {pill}
-            </span>
-          ))}
-        </div>
+              <Zap className="mr-1.5 h-3 w-3 text-[#3b82f6]" />
+              Early Access · Waitlist now open
+            </Badge>
 
-        {/* Waitlist form */}
-        <div className="mx-auto mt-10 max-w-md">
-          <WaitlistForm />
-        </div>
+            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              Run the ops.{' '}
+              <br />
+              <span className="text-[#3b82f6]">Not spreadsheets.</span>
+            </h1>
 
-        {/* Secondary CTA */}
-        <div className="mt-5">
-          <Button
-            size="sm"
-            variant="ghost"
-            asChild
-            className="text-[#475569] hover:text-[#94a3b8] hover:bg-transparent h-9 px-4 text-xs transition-colors duration-150"
-          >
-            <Link href="#features">See features →</Link>
-          </Button>
-        </div>
+            <p className="mt-6 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
+              Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
+            </p>
 
-        {/* Dashboard mockup */}
-        <div className="mt-14 overflow-hidden rounded-xl border border-[#1e293b] shadow-2xl shadow-black/60">
-          <DashboardMockup />
+            {/* Module pills */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {['📦 Inventory', '🚚 Fleet', '📋 Projects', '🏗 Production', '⚓ Dock', '👥 Teams'].map((pill) => (
+                <span
+                  key={pill}
+                  className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
+
+            {/* Waitlist form */}
+            <div className="mt-10">
+              <WaitlistForm />
+            </div>
+
+            {/* Secondary CTA */}
+            <div className="mt-4">
+              <Button
+                size="sm"
+                variant="ghost"
+                asChild
+                className="text-[#475569] hover:text-[#94a3b8] hover:bg-transparent h-9 px-0 text-xs transition-colors duration-150"
+              >
+                <a href="#features">See features →</a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right — dashboard mockup */}
+          <div className="overflow-hidden rounded-xl border border-[#1e293b] shadow-2xl shadow-black/60">
+            <DashboardMockup />
+          </div>
         </div>
       </div>
     </section>
