@@ -539,7 +539,7 @@ function WaitlistCounterStrip() {
   return (
     <section className="border-t border-[#1e293b] bg-[#111111]">
       <FadeInUp>
-        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-8 px-6 py-10 sm:gap-16">
+        <div className="mx-auto flex max-w-4xl items-center justify-center gap-8 px-6 py-10 sm:gap-16">
           {/* Stat: companies */}
           <div className="text-center">
             <p className="text-4xl font-bold tabular-nums text-[#3b82f6]">127</p>
@@ -1206,6 +1206,8 @@ const plans = [
 ]
 
 function PricingSection() {
+  const [annual, setAnnual] = useState(false)
+
   return (
     <section id="pricing" className="border-t border-[#1e293b] bg-[#0a0a0a] py-24">
       <div className="mx-auto max-w-6xl px-6">
@@ -1217,10 +1219,42 @@ function PricingSection() {
           <p className="mt-4 text-base text-[#94a3b8]">
             No hidden fees. Cancel anytime.
           </p>
+
+          {/* Billing toggle */}
+          <div className="mt-8 inline-flex items-center gap-1 rounded-full border border-[#1e293b] bg-[#111111] p-1">
+            <button
+              onClick={() => setAnnual(false)}
+              className={cn(
+                'rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-150',
+                !annual ? 'bg-[#1e293b] text-white' : 'text-[#475569] hover:text-[#94a3b8]',
+              )}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setAnnual(true)}
+              className={cn(
+                'flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-150',
+                annual ? 'bg-[#1e293b] text-white' : 'text-[#475569] hover:text-[#94a3b8]',
+              )}
+            >
+              Annually
+              <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">
+                -20%
+              </span>
+            </button>
+          </div>
         </FadeInUp>
 
         <div className="grid gap-4 sm:grid-cols-3">
-          {plans.map((plan) => (
+          {plans.map((plan) => {
+            const displayPrice =
+              plan.price === 'Custom'
+                ? 'Custom'
+                : annual
+                ? String(Math.round(Number(plan.price) * 0.8))
+                : plan.price
+            return (
             <div
               key={plan.name}
               className={cn(
@@ -1241,11 +1275,11 @@ function PricingSection() {
               <div className="mb-6">
                 <p className="text-sm font-semibold text-white">{plan.name}</p>
                 <div className="mt-3 flex items-end gap-1">
-                  {plan.price === 'Custom' ? (
+                  {displayPrice === 'Custom' ? (
                     <span className="text-3xl font-bold text-white">Custom</span>
                   ) : (
                     <>
-                      <span className="text-3xl font-bold tabular-nums text-white">€{plan.price}</span>
+                      <span className="text-3xl font-bold tabular-nums text-white">€{displayPrice}</span>
                       <span className="mb-1 text-sm text-[#94a3b8]">/month</span>
                     </>
                   )}
@@ -1276,7 +1310,8 @@ function PricingSection() {
                 </Link>
               </Button>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
@@ -1304,11 +1339,11 @@ const faqs = [
   },
   {
     q: 'How long does onboarding take?',
-    a: 'Most teams are fully operational within a day. You can import your existing inventory, register your fleet and invite your team within the first hour. Our support team is available to guide you through the process.',
+    a: 'Most teams are up and running in less than a day. The Corely team is available to assist with the initial setup at no additional cost.',
   },
   {
     q: 'Is there a trial period?',
-    a: 'During early access, Corely is completely free — no credit card, no time limit. The first 100 users keep free access forever.',
+    a: 'During early access, Corely is completely free — no credit card, no time limit.',
   },
 ]
 
