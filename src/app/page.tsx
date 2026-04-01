@@ -533,6 +533,45 @@ function DashboardMockup() {
   )
 }
 
+// ─── Waitlist Counter Strip ────────────────────────────────────────
+
+function WaitlistCounterStrip() {
+  return (
+    <section className="border-t border-[#1e293b] bg-[#111111]">
+      <FadeInUp>
+        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-8 px-6 py-10 sm:gap-16">
+          {/* Stat: companies */}
+          <div className="text-center">
+            <p className="text-4xl font-bold tabular-nums text-[#3b82f6]">127</p>
+            <p className="mt-1 text-sm text-[#94a3b8]">companies on the waitlist</p>
+          </div>
+
+          <div className="hidden h-12 w-px bg-[#1e293b] sm:block" />
+
+          {/* Progress bar */}
+          <div className="text-center">
+            <p className="mb-2 text-sm text-[#94a3b8]">Early access spots available</p>
+            <div className="h-1.5 w-48 overflow-hidden rounded-full bg-[#1e293b]">
+              <div className="h-full w-[63%] rounded-full bg-[#2563eb]" />
+            </div>
+            <p className="mt-2 text-xs text-[#475569]">
+              <span className="font-semibold text-[#3b82f6]">63 spots remaining</span> of 100 · First 100 get free access forever
+            </p>
+          </div>
+
+          <div className="hidden h-12 w-px bg-[#1e293b] sm:block" />
+
+          {/* Stat: free */}
+          <div className="text-center">
+            <p className="text-4xl font-bold text-[#3b82f6]">Free</p>
+            <p className="mt-1 text-sm text-[#94a3b8]">during early access</p>
+          </div>
+        </div>
+      </FadeInUp>
+    </section>
+  )
+}
+
 // ─── Solution ─────────────────────────────────────────────────────
 
 const BrandIcons = {
@@ -1369,6 +1408,7 @@ export default function LandingPage() {
       <LandingNav />
       <main>
         <HeroSection />
+        <WaitlistCounterStrip />
         <SolutionSection />
         <FeaturesSection />
         <HowItWorksSection />
