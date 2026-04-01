@@ -909,10 +909,10 @@ function FeaturesSection() {
         <FadeInUp className="mb-14 text-center">
           <p className="text-sm font-medium text-[#3b82f6]">Features</p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Everything your production needs
+            Everything your operation needs
           </h2>
           <p className="mt-4 text-base text-[#94a3b8]">
-            Built specifically for live event companies — not a generic ERP.
+            Built for companies with physical operations — not a generic ERP.
           </p>
         </FadeInUp>
 
@@ -921,7 +921,7 @@ function FeaturesSection() {
             name="AV Inventory"
             className="col-span-1 lg:col-span-2"
             background={<InventoryBackground />}
-            description="Real-time stock tracking for all AV equipment. Scan in, scan out, no spreadsheets."
+            description="Real-time stock control. Scan in, scan out. Conflicts detected automatically before they happen."
             href="#"
             cta="Explore inventory"
           />
@@ -929,7 +929,7 @@ function FeaturesSection() {
             name="Fleet Management"
             className="col-span-1"
             background={<FleetBackground />}
-            description="Track vehicles, assign drivers and monitor routes — all in one place."
+            description="Vehicles, drivers and documents. Routes, assignments and expiry alerts in one place."
             href="#"
             cta="See fleet"
           />
@@ -937,7 +937,7 @@ function FeaturesSection() {
             name="Projects & Picking"
             className="col-span-1"
             background={<ProjectBackground />}
-            description="From quote to delivery — manage phases, assign gear and generate picking lists."
+            description="From quote to delivery — phases, picking lists and automated equipment assignment."
             href="#"
             cta="View projects"
           />
@@ -945,7 +945,7 @@ function FeaturesSection() {
             name="Team & Roles"
             className="col-span-1"
             background={<TeamBackground />}
-            description="Role-based access for Admin, Warehouse and Commercial. Everyone sees what they need."
+            description="Admin, Warehouse and Commercial — each sees only what they need."
             href="#"
             cta="Manage team"
           />
@@ -953,7 +953,7 @@ function FeaturesSection() {
             name="Reports & Analytics"
             className="col-span-1 lg:col-span-1"
             background={<ReportsBackground />}
-            description="Utilisation rates, revenue per project and team trends. Decide on real data."
+            description="Utilisation rates, revenue per project and team trends. Metrics that matter."
             href="#"
             cta="Open reports"
           />
@@ -961,7 +961,7 @@ function FeaturesSection() {
             name="Alerts & Conflicts"
             className="col-span-1 sm:col-span-2 lg:col-span-3"
             background={<AlertsBackground />}
-            description="Proactive alerts for inventory conflicts, expiring documents and at-risk projects."
+            description="Automatic detection of inventory conflicts, expiring documents and at-risk projects."
             href="#"
             cta="View alerts"
           />
@@ -1017,6 +1017,61 @@ function HowItWorksSection() {
                 </div>
                 <h3 className="mb-2 text-sm font-semibold text-white">{s.title}</h3>
                 <p className="text-sm leading-relaxed text-[#94a3b8]">{s.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── VS Spreadsheets ──────────────────────────────────────────────
+
+const vsRows = [
+  { feature: 'Real-time inventory control',   sheets: 'Manual, outdated',   corely: 'Automatic' },
+  { feature: 'Equipment conflict detection',   sheets: "Doesn't exist",      corely: 'Automatic' },
+  { feature: 'Fleet and driver management',    sheets: 'Separate files',     corely: 'Integrated' },
+  { feature: 'Document expiry alerts',         sheets: "Doesn't exist",      corely: 'Automatic' },
+  { feature: 'Project picking lists',          sheets: 'Made by hand',       corely: 'Auto-generated', sheetsPartial: true },
+  { feature: 'Role-based team access',         sheets: "Doesn't exist",      corely: 'Admin / Warehouse / Commercial' },
+  { feature: 'Reports and analytics',          sheets: 'Manual, slow',       corely: 'Real time', sheetsPartial: true },
+] as const
+
+function VSSpreadsheets() {
+  return (
+    <section className="border-t border-[#1e293b] bg-[#0a0a0a] py-24">
+      <div className="mx-auto max-w-4xl px-6">
+        <FadeInUp className="mb-12 text-center">
+          <p className="text-sm font-medium text-[#3b82f6]">Corely vs Spreadsheets</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Leave the files behind.
+          </h2>
+          <p className="mt-4 text-base text-[#94a3b8]">
+            Spreadsheets weren&apos;t built to manage live operations. Corely was.
+          </p>
+        </FadeInUp>
+
+        <div className="overflow-hidden rounded-xl border border-[#1e293b]">
+          <div className="grid grid-cols-[2fr_1fr_1fr] border-b border-[#1e293b] bg-[#111111]">
+            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#475569]">Feature</div>
+            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#475569]">Spreadsheets</div>
+            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#3b82f6]">Corely</div>
+          </div>
+          {vsRows.map((row, i) => (
+            <div
+              key={row.feature}
+              className={cn(
+                'grid grid-cols-[2fr_1fr_1fr] border-b border-[#1e293b] last:border-0',
+                i % 2 === 0 ? 'bg-[#0a0a0a]' : 'bg-[#111111]/40',
+              )}
+            >
+              <div className="px-5 py-3.5 text-sm text-[#94a3b8]">{row.feature}</div>
+              <div className={cn('px-5 py-3.5 text-sm', 'sheetsPartial' in row && row.sheetsPartial ? 'text-[#f97316]' : 'text-[#475569]')}>
+                {'sheetsPartial' in row && row.sheetsPartial ? `~ ${row.sheets}` : `✗ ${row.sheets}`}
+              </div>
+              <div className="px-5 py-3.5 text-sm font-medium text-emerald-400">
+                ✓ {row.corely}
               </div>
             </div>
           ))}
@@ -1232,28 +1287,28 @@ function PricingSection() {
 
 const faqs = [
   {
-    q: 'Is Corely built specifically for live events?',
-    a: 'Yes. Corely was designed from the ground up for AV production and live event companies. It handles the specific workflows you deal with daily — equipment allocation, fleet logistics, project phases and team roles — without the overhead of a generic ERP.',
+    q: 'Is Corely only for live event companies?',
+    a: 'No. Corely is built for any company with physical operations — production, logistics, warehouse, dock or fleet management. If you manage equipment, vehicles and teams in the field, Corely is for you.',
   },
   {
     q: 'How does inventory conflict detection work?',
-    a: 'When you assign equipment to a project, Corely automatically checks whether that item is already allocated to another project during the same period. If a conflict is detected, you get an alert before it becomes a problem on show day.',
+    a: 'When you assign equipment to a project, Corely automatically checks if that item is already reserved for another project during the same period. If there is a conflict, you receive an alert before the problem even happens.',
   },
   {
     q: 'Can I control what each team member can see and do?',
-    a: 'Yes. Corely has three built-in roles — Admin, Warehouse and Commercial. Each role has a tailored view: warehouse staff focus on picking and inventory, commercial staff on projects and clients, and admins have full access.',
+    a: 'Yes. Corely features 3 access roles: Admin (full access), Warehouse (inventory and picking), and Sales (projects and reports). Each role sees only what is necessary for their work.',
   },
   {
     q: 'What documents does fleet management track?',
-    a: 'For trucks: vehicle inspection, insurance and tachograph. For drivers: driving licence and tachograph card. Corely alerts you automatically when any document is within 30 days of expiry.',
+    a: 'Inspections, insurance, tachographs, licenses, and any other document you configure. Corely notifies you whenever a document is about to expire.',
   },
   {
     q: 'How long does onboarding take?',
     a: 'Most teams are fully operational within a day. You can import your existing inventory, register your fleet and invite your team within the first hour. Our support team is available to guide you through the process.',
   },
   {
-    q: 'Is there a trial?',
-    a: 'Yes — you can start for free with no credit card required. The plan includes full access to all features so you can evaluate Corely with real data before committing.',
+    q: 'Is there a trial period?',
+    a: 'During early access, Corely is completely free — no credit card, no time limit. The first 100 users keep free access forever.',
   },
 ]
 
@@ -1412,6 +1467,7 @@ export default function LandingPage() {
         <SolutionSection />
         <FeaturesSection />
         <HowItWorksSection />
+        <VSSpreadsheets />
         <StatsSection />
         <ChecklistSection />
         <PricingSection />
