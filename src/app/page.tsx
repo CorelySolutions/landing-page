@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect, useRef, forwardRef } from 'react'
+import React, { useState, useEffect, useRef, forwardRef } from 'react'
 import {
   Package,
   Menu,
@@ -1391,8 +1391,8 @@ function PricingComparison() {
             </thead>
             <tbody>
               {comparisonSections.map((section) => (
-                <>
-                  <tr key={section.title}>
+                <React.Fragment key={section.title}>
+                  <tr>
                     <td colSpan={4} className="pt-5 pb-2 text-xs font-semibold uppercase tracking-wider text-[#3b82f6]">
                       {section.title}
                     </td>
@@ -1405,7 +1405,7 @@ function PricingComparison() {
                       <td className="py-2.5 text-center"><CellValue value={row.enterprise} /></td>
                     </tr>
                   ))}
-                </>
+                </React.Fragment>
               ))}
             </tbody>
           </table>
