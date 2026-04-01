@@ -207,7 +207,7 @@ function WaitlistForm() {
           )}
         </button>
       </div>
-      <div className="mt-3 flex justify-center items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
         <span className="flex items-center gap-1.5 text-xs text-[#475569]">
           <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#3b82f6]" />
           Free during early access
@@ -1054,14 +1054,14 @@ const plans = [
     price: '49',
     description: 'For small teams getting started with event operations.',
     features: [
-      'Up to 5 team members',
-      '100 inventory items',
-      '3 active projects',
+      'Up to 3 team members',
+      '500 inventory items',
+      '10 active projects',
       'Fleet management (5 vehicles)',
       'Basic reports',
       'Email support',
     ],
-    cta: 'Coming Soon',
+    cta: 'Get started',
     highlighted: false,
   },
   {
@@ -1069,8 +1069,8 @@ const plans = [
     price: '129',
     description: 'For growing companies that need full operational control.',
     features: [
-      'Up to 50 team members',
-      '500 inventory items',
+      'Up to 15 team members',
+      'Unlimited inventory',
       'Unlimited projects',
       'Fleet management (unlimited)',
       'Advanced reports & analytics',
@@ -1078,7 +1078,7 @@ const plans = [
       'Conflict detection & alerts',
       'Priority support',
     ],
-    cta: 'Coming Soon',
+    cta: 'Get started',
     highlighted: true,
   },
   {
