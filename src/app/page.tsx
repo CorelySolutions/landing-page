@@ -261,12 +261,19 @@ function HeroSection() {
 
             {/* Module pills */}
             <div className="mt-6 flex flex-wrap gap-2">
-              {['📦 Inventory', '🚚 Fleet', '📋 Projects', '🏗 Production', '⚓ Dock', '👥 Teams'].map((pill) => (
+              {[
+                { emoji: '📦', label: 'Inventory' },
+                { emoji: '🚚', label: 'Fleet' },
+                { emoji: '📋', label: 'Projects' },
+                { emoji: '🏗', label: 'Production' },
+                { emoji: '⚓', label: 'Dock' },
+                { emoji: '👥', label: 'Teams' },
+              ].map(({ emoji, label }) => (
                 <span
-                  key={pill}
+                  key={label}
                   className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
                 >
-                  {pill}
+                  <span aria-hidden="true">{emoji}</span> {label}
                 </span>
               ))}
             </div>
