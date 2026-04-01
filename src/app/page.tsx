@@ -28,6 +28,8 @@ import {
   Container,
   Bot,
   ClipboardList,
+  Check,
+  Minus,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -512,70 +514,31 @@ function DashboardMockup() {
   )
 }
 
-// ─── Waitlist Counter Strip ────────────────────────────────────────
-
-function WaitlistCounterStrip() {
-  return (
-    <section className="border-t border-[#1e293b] bg-[#111111]">
-      <FadeInUp>
-        <div className="mx-auto flex max-w-4xl items-center justify-center gap-8 px-6 py-10 sm:gap-16">
-          {/* Stat: companies */}
-          <div className="text-center">
-            <p className="text-4xl font-bold tabular-nums text-[#3b82f6]">127</p>
-            <p className="mt-1 text-sm text-[#94a3b8]">companies on the waitlist</p>
-          </div>
-
-          <div className="hidden h-12 w-px bg-[#1e293b] sm:block" />
-
-          {/* Progress bar */}
-          <div className="text-center">
-            <p className="mb-2 text-sm text-[#94a3b8]">Early access spots available</p>
-            <div className="h-1.5 w-48 overflow-hidden rounded-full bg-[#1e293b]">
-              <div className="h-full w-[63%] rounded-full bg-[#2563eb]" />
-            </div>
-            <p className="mt-2 text-xs text-[#475569]">
-              <span className="font-semibold text-[#3b82f6]">63 spots remaining</span> of 100 · First 100 get free access forever
-            </p>
-          </div>
-
-          <div className="hidden h-12 w-px bg-[#1e293b] sm:block" />
-
-          {/* Stat: free */}
-          <div className="text-center">
-            <p className="text-4xl font-bold text-[#3b82f6]">Free</p>
-            <p className="mt-1 text-sm text-[#94a3b8]">during early access</p>
-          </div>
-        </div>
-      </FadeInUp>
-    </section>
-  )
-}
-
 // ─── Solution ─────────────────────────────────────────────────────
 
 const BrandIcons = {
   googleDrive: () => (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
       <path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z" />
     </svg>
   ),
   googleSheets: () => (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
       <path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z" />
     </svg>
   ),
   whatsapp: () => (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
     </svg>
   ),
   gmail: () => (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
       <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
     </svg>
   ),
   notion: () => (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor" aria-hidden>
       <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" />
     </svg>
   ),
@@ -586,7 +549,7 @@ const NodeCircle = forwardRef<HTMLDivElement, { className?: string; children?: R
     <div
       ref={ref}
       className={cn(
-        'z-10 flex h-16 w-16 items-center justify-center rounded-xl border border-[#1e293b] bg-[#111111] text-[#3b82f6] transition-colors duration-200 hover:border-[#3b82f6]/40 hover:bg-[#161616]',
+        'z-10 flex h-20 w-20 items-center justify-center rounded-xl border border-[#1e293b] bg-[#111111] text-[#3b82f6] transition-colors duration-200 hover:border-[#3b82f6]/40 hover:bg-[#161616]',
         className,
       )}
     >
@@ -676,26 +639,32 @@ function SolutionSection() {
           className="relative mx-auto flex h-[500px] w-full max-w-3xl items-center justify-center overflow-hidden p-10"
         >
           <div className="flex w-full flex-row items-center justify-between gap-10">
-            <div className="flex flex-col justify-center gap-2">
-              <NodeCircle ref={div1Ref}><BrandIcons.googleSheets /></NodeCircle>
-              <NodeCircle ref={div2Ref}><BrandIcons.googleDrive /></NodeCircle>
-              <NodeCircle ref={div3Ref}><BrandIcons.whatsapp /></NodeCircle>
-              <NodeCircle ref={div4Ref}><BrandIcons.gmail /></NodeCircle>
-              <NodeCircle ref={div5Ref}><BrandIcons.notion /></NodeCircle>
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] font-medium text-[#475569]">Agents</p>
+              <div className="flex flex-col gap-2">
+                <NodeCircle ref={div1Ref}><BrandIcons.googleSheets /></NodeCircle>
+                <NodeCircle ref={div2Ref}><BrandIcons.googleDrive /></NodeCircle>
+                <NodeCircle ref={div3Ref}><BrandIcons.whatsapp /></NodeCircle>
+                <NodeCircle ref={div4Ref}><BrandIcons.gmail /></NodeCircle>
+                <NodeCircle ref={div5Ref}><BrandIcons.notion /></NodeCircle>
+              </div>
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] font-medium text-[#475569]">AI Processing</p>
               <NodeCircle ref={div6Ref} className="rounded-2xl">
-                <Brain className="h-6 w-6" />
+                <Brain className="h-8 w-8" />
               </NodeCircle>
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] font-medium text-[#475569]">Dashboard</p>
               <NodeCircle ref={div7Ref} className="rounded-2xl">
-                <Package className="h-6 w-6" />
+                <LayoutDashboard className="h-8 w-8" />
               </NodeCircle>
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] font-medium text-[#475569]">Users</p>
               <NodeCircle ref={div8Ref}>
-                <Users className="h-6 w-6" />
+                <Users className="h-8 w-8" />
               </NodeCircle>
             </div>
           </div>
@@ -1032,29 +1001,198 @@ function VSSpreadsheets() {
         </FadeInUp>
 
         <div className="overflow-hidden rounded-xl border border-[#1e293b]">
-          <div className="grid grid-cols-[2fr_1fr_1fr] border-b border-[#1e293b] bg-[#111111]">
-            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#475569]">Feature</div>
-            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#475569]">Spreadsheets</div>
-            <div className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#3b82f6]">Corely</div>
+          {/* Header */}
+          <div className="grid grid-cols-[2fr_1fr_1fr] border-b border-[#1e293b] bg-[#0d0d0d]">
+            <div className="px-5 py-3.5 text-[11px] font-medium uppercase tracking-widest text-[#334155]" />
+            <div className="px-5 py-3.5 text-[11px] font-medium uppercase tracking-widest text-[#334155]">
+              Spreadsheets
+            </div>
+            <div className="flex items-center gap-2 px-5 py-3.5 bg-[#1e40af]/[0.08] border-l border-[#1e293b]">
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-[#3b82f6]">Corely</span>
+            </div>
           </div>
+
+          {/* Rows */}
           {vsRows.map((row, i) => (
             <div
               key={row.feature}
               className={cn(
-                'grid grid-cols-[2fr_1fr_1fr] border-b border-[#1e293b] last:border-0',
-                i % 2 === 0 ? 'bg-[#0a0a0a]' : 'bg-[#111111]/40',
+                'group grid grid-cols-[2fr_1fr_1fr] transition-colors duration-100 hover:bg-white/[0.02]',
+                i < vsRows.length - 1 && 'border-b border-[#1e293b]/50',
               )}
             >
-              <div className="px-5 py-3.5 text-sm text-[#94a3b8]">{row.feature}</div>
-              <div className={cn('px-5 py-3.5 text-sm', 'sheetsPartial' in row && row.sheetsPartial ? 'text-[#f97316]' : 'text-[#475569]')}>
-                {'sheetsPartial' in row && row.sheetsPartial ? `~ ${row.sheets}` : `✗ ${row.sheets}`}
+              {/* Feature */}
+              <div className="px-5 py-4 text-sm text-[#94a3b8] group-hover:text-[#cbd5e1] transition-colors duration-100">
+                {row.feature}
               </div>
-              <div className="px-5 py-3.5 text-sm font-medium text-emerald-400">
-                ✓ {row.corely}
+
+              {/* Spreadsheets cell */}
+              <div className="flex items-center gap-2 px-5 py-4">
+                {'sheetsPartial' in row && row.sheetsPartial ? (
+                  <>
+                    <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-[#f97316]/70" strokeWidth={2} />
+                    <span className="text-sm text-[#f97316]/80">{row.sheets}</span>
+                  </>
+                ) : (
+                  <>
+                    <X className="h-3.5 w-3.5 shrink-0 text-[#334155]" strokeWidth={2.5} />
+                    <span className="text-sm text-[#334155]">{row.sheets}</span>
+                  </>
+                )}
+              </div>
+
+              {/* Corely cell */}
+              <div className="flex items-center gap-2 px-5 py-4 bg-[#1e40af]/[0.06] border-l border-[#1e293b]/50">
+                <Check className="h-3.5 w-3.5 shrink-0 text-emerald-400" strokeWidth={2.5} />
+                <span className="text-sm font-medium text-emerald-400">{row.corely}</span>
               </div>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Cost Savings ─────────────────────────────────────────────────
+
+const savingsTiers = [
+  {
+    label: 'Small',
+    sublabel: 'Up to 5 people',
+    hoursPerWeek: 6,
+    conflictsPerMonth: 2,
+    conflictCost: 180,
+    adminCost: 240,
+  },
+  {
+    label: 'Medium',
+    sublabel: '6 – 15 people',
+    hoursPerWeek: 18,
+    conflictsPerMonth: 6,
+    conflictCost: 520,
+    adminCost: 680,
+  },
+  {
+    label: 'Large',
+    sublabel: '15+ people',
+    hoursPerWeek: 40,
+    conflictsPerMonth: 14,
+    conflictCost: 1200,
+    adminCost: 1600,
+  },
+] as const
+
+function CostSavingsSection() {
+  const [tier, setTier] = useState(1)
+  const t = savingsTiers[tier]
+  const hourlyRate = 18
+  const timeSavings = t.hoursPerWeek * hourlyRate * 4
+  const total = timeSavings + t.conflictCost + t.adminCost
+
+  return (
+    <section className="border-t border-[#1e293b] bg-[#111111] py-24">
+      <div className="mx-auto max-w-4xl px-6">
+        <FadeInUp className="mb-12 text-center">
+          <p className="text-sm font-medium text-[#3b82f6]">Cost savings</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            See how much you can save.
+          </h2>
+          <p className="mt-4 text-base text-[#94a3b8]">
+            Switching to Corely pays for itself. Select your team size to see the estimate.
+          </p>
+        </FadeInUp>
+
+        {/* Team size selector */}
+        <div className="mb-10 flex justify-center">
+          <div className="inline-flex gap-1 rounded-xl border border-[#1e293b] bg-[#0d0d0d] p-1">
+            {savingsTiers.map((st, i) => (
+              <button
+                key={st.label}
+                onClick={() => setTier(i)}
+                className={cn(
+                  'flex cursor-pointer flex-col items-center rounded-lg px-5 py-2.5 text-center transition-colors duration-150',
+                  tier === i
+                    ? 'bg-[#1e293b] text-white'
+                    : 'text-[#475569] hover:text-[#94a3b8]',
+                )}
+              >
+                <span className="text-sm font-semibold">{st.label}</span>
+                <span className={cn('text-[11px] transition-colors duration-150', tier === i ? 'text-[#64748b]' : 'text-[#334155]')}>{st.sublabel}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Savings cards */}
+        <div className="grid gap-4 sm:grid-cols-3">
+          {/* Time saved */}
+          <div className="rounded-xl border border-[#1e293b] bg-[#0d0d0d] p-6">
+            <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-[#1e40af]/20">
+              <Bell className="h-4 w-4 text-[#3b82f6]" />
+            </div>
+            <p className="text-[11px] font-medium uppercase tracking-widest text-[#475569]">Time saved</p>
+            <p className="mt-2 text-3xl font-bold tabular-nums text-white">
+              {t.hoursPerWeek}h
+              <span className="text-base font-normal text-[#475569]">/week</span>
+            </p>
+            <p className="mt-2 text-sm text-[#475569]">
+              ≈ <span className="font-medium text-[#94a3b8]">€{timeSavings.toLocaleString()}/mo</span> in recovered labour
+            </p>
+          </div>
+
+          {/* Conflicts avoided */}
+          <div className="rounded-xl border border-[#1e293b] bg-[#0d0d0d] p-6">
+            <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10">
+              <ShieldCheck className="h-4 w-4 text-emerald-400" />
+            </div>
+            <p className="text-[11px] font-medium uppercase tracking-widest text-[#475569]">Conflicts avoided</p>
+            <p className="mt-2 text-3xl font-bold tabular-nums text-white">
+              {t.conflictsPerMonth}
+              <span className="text-base font-normal text-[#475569]">/month</span>
+            </p>
+            <p className="mt-2 text-sm text-[#475569]">
+              ≈ <span className="font-medium text-[#94a3b8]">€{t.conflictCost.toLocaleString()}/mo</span> in avoided losses
+            </p>
+          </div>
+
+          {/* Admin overhead */}
+          <div className="rounded-xl border border-[#1e293b] bg-[#0d0d0d] p-6">
+            <div className="mb-4 flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/10">
+              <Zap className="h-4 w-4 text-amber-400" />
+            </div>
+            <p className="text-[11px] font-medium uppercase tracking-widest text-[#475569]">Admin overhead</p>
+            <p className="mt-2 text-3xl font-bold tabular-nums text-white">
+              €{t.adminCost.toLocaleString()}
+              <span className="text-base font-normal text-[#475569]">/mo</span>
+            </p>
+            <p className="mt-2 text-sm text-[#475569]">
+              eliminated in <span className="font-medium text-[#94a3b8]">manual coordination</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Total */}
+        <div className="relative mt-4 overflow-hidden rounded-xl border border-[#1e40af]/30 bg-[#0d0d0d] px-6 py-5">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-0 top-0 h-full w-1 rounded-l-xl bg-[#1e40af]"
+          />
+          <div className="flex items-center justify-between pl-2">
+            <div>
+              <p className="text-sm font-medium text-white">Estimated monthly savings</p>
+              <p className="mt-0.5 text-[11px] text-[#475569]">Based on industry averages for your team size</p>
+            </div>
+            <div className="text-right">
+              <p className="text-3xl font-bold tabular-nums text-[#3b82f6]">€{total.toLocaleString()}</p>
+              <p className="mt-0.5 text-[11px] text-[#475569]">per month</p>
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-5 text-center text-xs text-[#334155]">
+          Estimates based on industry averages. Actual savings vary by team and workflow.
+        </p>
       </div>
     </section>
   )
@@ -1219,7 +1357,7 @@ function PricingSection() {
             >
               Annually
               <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">
-                -20%
+                -25%
               </span>
             </button>
           </div>
@@ -1231,7 +1369,7 @@ function PricingSection() {
               plan.price === 'Custom'
                 ? 'Custom'
                 : annual
-                ? String(Math.round(Number(plan.price) * 0.8))
+                ? String(Math.round(Number(plan.price) * 0.75))
                 : plan.price
             return (
             <div
@@ -1360,49 +1498,102 @@ const comparisonSections = [
   },
 ]
 
-function CellValue({ value }: { value: boolean | string }) {
-  if (value === true)  return <span className="text-emerald-400">✓</span>
-  if (value === false) return <span className="text-[#334155]">—</span>
-  return <span className="text-[#94a3b8]">{value}</span>
+function CellValue({ value, highlight }: { value: boolean | string; highlight?: boolean }) {
+  if (value === true)
+    return (
+      <span className="inline-flex items-center justify-center">
+        <Check className={cn('h-4 w-4', highlight ? 'text-[#3b82f6]' : 'text-emerald-400')} strokeWidth={2.5} />
+      </span>
+    )
+  if (value === false)
+    return (
+      <span className="inline-flex items-center justify-center">
+        <Minus className="h-4 w-4 text-[#2a3a4a]" strokeWidth={2} />
+      </span>
+    )
+  return (
+    <span className={cn('text-sm font-medium tabular-nums', highlight ? 'text-white' : 'text-[#94a3b8]')}>
+      {value}
+    </span>
+  )
 }
 
 function PricingComparison() {
   const [open, setOpen] = useState(false)
+  const plans = ['Starter', 'Pro', 'Enterprise']
+  const proIndex = 1 // which plan is highlighted
+
   return (
     <div className="mt-10">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="mx-auto flex items-center gap-2 text-sm text-[#475569] hover:text-[#94a3b8] transition-colors duration-150"
+        className="mx-auto flex items-center gap-2 text-sm text-white font-bold hover:text-[#94a3b8] transition-colors duration-150"
+        aria-expanded={open}
       >
-        {open ? 'Hide' : 'Compare all features'}
+        {open ? 'Hide feature comparison' : 'Compare all features'}
         <ChevronRight className={cn('h-4 w-4 transition-transform duration-200', open && 'rotate-90')} />
       </button>
 
       {open && (
-        <div className="mt-6 overflow-x-auto">
-          <table className="w-full text-sm">
+        <div className="mt-8 overflow-x-auto rounded-xl border border-[#1e293b]">
+          <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[#1e293b]">
-                <th className="pb-3 text-left text-xs font-semibold text-[#475569]">Feature</th>
-                {['Starter', 'Pro', 'Enterprise'].map((p) => (
-                  <th key={p} className="pb-3 text-center text-xs font-semibold text-[#94a3b8] w-28">{p}</th>
+                <th className="px-4 py-3.5 text-left text-xs font-medium text-[#475569] w-[40%]">Feature</th>
+                {plans.map((p, i) => (
+                  <th
+                    key={p}
+                    className={cn(
+                      'px-4 py-3.5 text-center text-xs font-semibold w-[20%]',
+                      i === proIndex
+                        ? 'text-[#3b82f6] bg-[#1e40af]/10'
+                        : 'text-[#475569]',
+                    )}
+                  >
+                    <span className="flex flex-col items-center gap-1">
+                      {p}
+                      {i === proIndex && (
+                        <span className="rounded-full bg-[#1e40af]/30 px-2 py-0.5 text-[10px] font-semibold text-[#60a5fa]">
+                          Popular
+                        </span>
+                      )}
+                    </span>
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {comparisonSections.map((section) => (
+              {comparisonSections.map((section, si) => (
                 <React.Fragment key={section.title}>
-                  <tr>
-                    <td colSpan={4} className="pt-5 pb-2 text-xs font-semibold uppercase tracking-wider text-[#3b82f6]">
+                  <tr className={cn(si > 0 && 'border-t border-[#1e293b]')}>
+                    <td
+                      colSpan={4}
+                      className="px-4 pt-5 pb-2 text-[11px] font-semibold uppercase tracking-widest text-[#475569]"
+                    >
                       {section.title}
                     </td>
                   </tr>
-                  {section.rows.map((row) => (
-                    <tr key={row.feature} className="border-b border-[#1e293b]/50">
-                      <td className="py-2.5 text-[#94a3b8]">{row.feature}</td>
-                      <td className="py-2.5 text-center"><CellValue value={row.starter} /></td>
-                      <td className="py-2.5 text-center"><CellValue value={row.pro} /></td>
-                      <td className="py-2.5 text-center"><CellValue value={row.enterprise} /></td>
+                  {section.rows.map((row, ri) => (
+                    <tr
+                      key={row.feature}
+                      className={cn(
+                        'group transition-colors duration-100',
+                        ri < section.rows.length - 1 && 'border-b border-[#1e293b]/40',
+                        'hover:bg-white/[0.02]',
+                      )}
+                    >
+                      <td className="px-4 py-3 text-sm text-[#94a3b8] group-hover:text-[#cbd5e1] transition-colors duration-100">
+                        {row.feature}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <CellValue value={row.starter} />
+                      </td>
+                      <td className="px-4 py-3 text-center bg-[#1e40af]/[0.06]">
+                        <CellValue value={row.pro} highlight />
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <CellValue value={row.enterprise} />
+                      </td>
                     </tr>
                   ))}
                 </React.Fragment>
@@ -1595,11 +1786,11 @@ export default function LandingPage() {
       <LandingNav />
       <main>
         <HeroSection />
-        <WaitlistCounterStrip />
         <SolutionSection />
         <FeaturesSection />
         <HowItWorksSection />
         <VSSpreadsheets />
+        <CostSavingsSection />
         <StatsSection />
         <ChecklistSection />
         <PricingSection />
