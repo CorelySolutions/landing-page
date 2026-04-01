@@ -258,25 +258,6 @@ function HeroSection() {
             Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
           </p>
 
-          {/* Module pills */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-            {[
-              { emoji: '📦', label: 'Inventory' },
-              { emoji: '🚚', label: 'Fleet' },
-              { emoji: '📋', label: 'Projects' },
-              { emoji: '🏗', label: 'Production' },
-              { emoji: '⚓', label: 'Dock' },
-              { emoji: '👥', label: 'Teams' },
-            ].map(({ emoji, label }) => (
-              <span
-                key={label}
-                className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
-              >
-                <span aria-hidden="true">{emoji}</span> {label}
-              </span>
-            ))}
-          </div>
-
           {/* Waitlist form */}
           <div className="mt-10">
             <WaitlistForm />
@@ -1311,8 +1292,126 @@ function PricingSection() {
             )
           })}
         </div>
+
+        {/* Feature comparison table */}
+        <PricingComparison />
       </div>
     </section>
+  )
+}
+
+const comparisonSections = [
+  {
+    title: 'Team',
+    rows: [
+      { feature: 'Team members',           starter: '3',          pro: '15',         enterprise: 'Unlimited' },
+      { feature: 'Admin roles',            starter: 'Basic',      pro: 'Basic',      enterprise: 'Custom' },
+      { feature: 'Role-based access',      starter: true,         pro: true,         enterprise: true },
+      { feature: 'Custom permissions',     starter: false,        pro: false,        enterprise: true },
+      { feature: 'Single Sign-On (SSO)',   starter: false,        pro: false,        enterprise: true },
+    ],
+  },
+  {
+    title: 'Inventory',
+    rows: [
+      { feature: 'Inventory items',        starter: '500',        pro: 'Unlimited',  enterprise: 'Unlimited' },
+      { feature: 'Scan in / scan out',     starter: true,         pro: true,         enterprise: true },
+      { feature: 'Conflict detection',     starter: false,        pro: true,         enterprise: true },
+      { feature: 'Expiry & document alerts', starter: false,      pro: true,         enterprise: true },
+    ],
+  },
+  {
+    title: 'Projects',
+    rows: [
+      { feature: 'Active projects',        starter: '10',         pro: 'Unlimited',  enterprise: 'Unlimited' },
+      { feature: 'Picking lists',          starter: true,         pro: true,         enterprise: true },
+      { feature: 'Kanban boards',          starter: false,        pro: true,         enterprise: true },
+      { feature: 'Equipment auto-assign',  starter: false,        pro: true,         enterprise: true },
+    ],
+  },
+  {
+    title: 'Fleet',
+    rows: [
+      { feature: 'Vehicles',               starter: '5',          pro: 'Unlimited',  enterprise: 'Unlimited' },
+      { feature: 'Driver management',      starter: true,         pro: true,         enterprise: true },
+      { feature: 'Document expiry alerts', starter: false,        pro: true,         enterprise: true },
+      { feature: 'Route assignments',      starter: true,         pro: true,         enterprise: true },
+    ],
+  },
+  {
+    title: 'Reports & Analytics',
+    rows: [
+      { feature: 'Basic analytics',        starter: true,         pro: true,         enterprise: true },
+      { feature: 'Advanced analytics',     starter: false,        pro: true,         enterprise: true },
+      { feature: 'Revenue per project',    starter: false,        pro: true,         enterprise: true },
+      { feature: 'Custom dashboards',      starter: false,        pro: false,        enterprise: true },
+    ],
+  },
+  {
+    title: 'Support',
+    rows: [
+      { feature: 'Email support',          starter: true,         pro: true,         enterprise: true },
+      { feature: 'Priority support',       starter: false,        pro: true,         enterprise: true },
+      { feature: 'Dedicated onboarding',   starter: false,        pro: false,        enterprise: true },
+      { feature: 'Dedicated account manager', starter: false,     pro: false,        enterprise: true },
+      { feature: 'SLA & uptime guarantee', starter: false,        pro: false,        enterprise: true },
+      { feature: 'Custom integrations',    starter: false,        pro: false,        enterprise: true },
+    ],
+  },
+]
+
+function CellValue({ value }: { value: boolean | string }) {
+  if (value === true)  return <span className="text-emerald-400">✓</span>
+  if (value === false) return <span className="text-[#334155]">—</span>
+  return <span className="text-[#94a3b8]">{value}</span>
+}
+
+function PricingComparison() {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="mt-10">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="mx-auto flex items-center gap-2 text-sm text-[#475569] hover:text-[#94a3b8] transition-colors duration-150"
+      >
+        {open ? 'Hide' : 'Compare all features'}
+        <ChevronRight className={cn('h-4 w-4 transition-transform duration-200', open && 'rotate-90')} />
+      </button>
+
+      {open && (
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-[#1e293b]">
+                <th className="pb-3 text-left text-xs font-semibold text-[#475569]">Feature</th>
+                {['Starter', 'Pro', 'Enterprise'].map((p) => (
+                  <th key={p} className="pb-3 text-center text-xs font-semibold text-[#94a3b8] w-28">{p}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonSections.map((section) => (
+                <>
+                  <tr key={section.title}>
+                    <td colSpan={4} className="pt-5 pb-2 text-xs font-semibold uppercase tracking-wider text-[#3b82f6]">
+                      {section.title}
+                    </td>
+                  </tr>
+                  {section.rows.map((row) => (
+                    <tr key={row.feature} className="border-b border-[#1e293b]/50">
+                      <td className="py-2.5 text-[#94a3b8]">{row.feature}</td>
+                      <td className="py-2.5 text-center"><CellValue value={row.starter} /></td>
+                      <td className="py-2.5 text-center"><CellValue value={row.pro} /></td>
+                      <td className="py-2.5 text-center"><CellValue value={row.enterprise} /></td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
   )
 }
 
