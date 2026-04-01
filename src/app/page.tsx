@@ -100,17 +100,6 @@ function LandingNav() {
             </a>
           ))}
         </nav>
-
-        {/* CTA */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="ghost" size="sm" asChild className="text-[#94a3b8] hover:text-white hover:bg-white/5">
-            <Link href="/login">Sign in</Link>
-          </Button>
-          <Button size="sm" asChild className="bg-[#1e40af] hover:bg-[#1d4ed8] text-white border-0 transition-colors duration-150">
-            <Link href="/signup">Get started</Link>
-          </Button>
-        </div>
-
         {/* Mobile toggle */}
         <button
           className="flex items-center justify-center rounded-md p-2 text-[#94a3b8] transition-colors hover:text-white md:hidden"
@@ -1247,9 +1236,9 @@ function FAQSection() {
 function CTASection() {
   return (
     <section id="contact" className="border-t border-[#1e293b] bg-[#0a0a0a] py-24">
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-3xl px-6">
         {/* Card with subtle blue border and glow */}
-        <div className="relative overflow-hidden rounded-2xl border border-[#1e40af]/30 bg-[#111111] p-12 text-center">
+        <div className="relative overflow-hidden rounded-2xl border border-[#1e40af]/20 bg-[#111111] px-8 py-16 text-center sm:px-16">
           {/* Subtle background glow */}
           <div
             aria-hidden
@@ -1264,25 +1253,33 @@ function CTASection() {
             <p className="mt-4 text-base leading-relaxed text-[#94a3b8]">
               Start today. No credit card required. Support team available for onboarding.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="h-12 flex-1 rounded-lg border border-[#1e293b] bg-[#0d0d0d] px-4 text-sm text-white placeholder-[#475569] outline-none transition-colors duration-150 focus:border-[#3b82f6]"
+              />
               <Button
                 size="lg"
-                asChild
-                className="gap-2 bg-[#1e40af] hover:bg-[#1d4ed8] text-white border-0 px-6 h-11 transition-colors duration-150"
+                className="gap-2 bg-[#1e40af] hover:bg-[#1d4ed8] text-white border-0 px-6 h-12 text-sm font-medium transition-colors duration-150 whitespace-nowrap"
               >
-                <Link href="/signup">
-                  Create account
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                Join the waitlist
+                <ArrowRight className="h-4 w-4" />
               </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                asChild
-                className="text-[#94a3b8] hover:text-white hover:bg-white/5 h-11 px-6 transition-colors duration-150"
-              >
-                <a href="mailto:hello@corely.pt">Talk to the team</a>
-              </Button>
+            </div>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <span className="flex items-center gap-1.5 text-xs text-[#94a3b8]">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#3b82f6]" />
+                Free during early access
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-[#94a3b8]">
+                <ShieldCheck className="h-3.5 w-3.5 text-[#3b82f6]" />
+                No credit card required
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-[#94a3b8]">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#3b82f6]" />
+                Cancel anytime
+              </span>
             </div>
           </FadeInUp>
         </div>
