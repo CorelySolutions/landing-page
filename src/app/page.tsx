@@ -207,7 +207,7 @@ function WaitlistForm() {
           )}
         </button>
       </div>
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
+      <div className="mt-3 flex justify-center items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
         <span className="flex items-center gap-1.5 text-xs text-[#475569]">
           <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#3b82f6]" />
           Free during early access
@@ -243,17 +243,30 @@ function HeroSection() {
           className="mb-6 border-[#1e293b] bg-white/[0.04] text-[#94a3b8] text-xs font-normal px-3 py-1"
         >
           <Zap className="mr-1.5 h-3 w-3 text-[#3b82f6]" />
-          Launching soon · Waitlist now open
+          Early Access · Waitlist now open
         </Badge>
 
-        <h1 className="mx-auto max-w-3xl text-4xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl md:text-6xl">
-          Your entire event operation{' '}
-          <span className="text-[#3b82f6]">in one place</span>
+        <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+          Run the ops.{' '}
+          <br className="hidden sm:block" />
+          <span className="text-[#3b82f6]">Not spreadsheets.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-[#94a3b8] sm:text-lg">
-          AV inventory, fleet, projects and team. Corely centralises everything you need to produce flawless live events.
+          Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
         </p>
+
+        {/* Module pills */}
+        <div className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2">
+          {['📦 Inventory', '🚚 Fleet', '📋 Projects', '🏗 Production', '⚓ Dock', '👥 Teams'].map((pill) => (
+            <span
+              key={pill}
+              className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
+            >
+              {pill}
+            </span>
+          ))}
+        </div>
 
         {/* Waitlist form */}
         <div className="mx-auto mt-10 max-w-md">
@@ -1041,14 +1054,14 @@ const plans = [
     price: '49',
     description: 'For small teams getting started with event operations.',
     features: [
-      'Up to 3 team members',
-      '500 inventory items',
-      '10 active projects',
+      'Up to 5 team members',
+      '100 inventory items',
+      '3 active projects',
       'Fleet management (5 vehicles)',
       'Basic reports',
       'Email support',
     ],
-    cta: 'Get started',
+    cta: 'Coming Soon',
     highlighted: false,
   },
   {
@@ -1056,8 +1069,8 @@ const plans = [
     price: '129',
     description: 'For growing companies that need full operational control.',
     features: [
-      'Up to 15 team members',
-      'Unlimited inventory',
+      'Up to 50 team members',
+      '500 inventory items',
       'Unlimited projects',
       'Fleet management (unlimited)',
       'Advanced reports & analytics',
@@ -1065,7 +1078,7 @@ const plans = [
       'Conflict detection & alerts',
       'Priority support',
     ],
-    cta: 'Get started',
+    cta: 'Coming Soon',
     highlighted: true,
   },
   {
