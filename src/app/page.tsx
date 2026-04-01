@@ -237,69 +237,67 @@ function HeroSection() {
         style={{ background: 'radial-gradient(ellipse at center, #2563eb 0%, transparent 70%)' }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — text */}
-          <div>
-            <Badge
-              variant="outline"
-              className="mb-6 border-[#1e293b] bg-white/[0.04] text-[#94a3b8] text-xs font-normal px-3 py-1"
-            >
-              <Zap className="mr-1.5 h-3 w-3 text-[#3b82f6]" />
-              Early Access · Waitlist now open
-            </Badge>
+      <div className="relative mx-auto max-w-5xl px-6">
+        {/* Text — centred */}
+        <div className="mx-auto max-w-2xl text-center">
+          <Badge
+            variant="outline"
+            className="mb-6 border-[#1e293b] bg-white/[0.04] text-[#94a3b8] text-xs font-normal px-3 py-1"
+          >
+            <Zap className="mr-1.5 h-3 w-3 text-[#3b82f6]" />
+            Early Access · Waitlist now open
+          </Badge>
 
-            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
-              Run the ops.{' '}
-              <br />
-              <span className="text-[#3b82f6]">Not spreadsheets.</span>
-            </h1>
+          <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+            Run the ops.{' '}
+            <br />
+            <span className="text-[#3b82f6]">Not spreadsheets.</span>
+          </h1>
 
-            <p className="mt-6 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
-              Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
-            </p>
+          <p className="mt-6 text-base leading-relaxed text-[#94a3b8] sm:text-lg">
+            Inventory, fleet, projects, warehouse and team — one platform built for companies with operations in the field.
+          </p>
 
-            {/* Module pills */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              {[
-                { emoji: '📦', label: 'Inventory' },
-                { emoji: '🚚', label: 'Fleet' },
-                { emoji: '📋', label: 'Projects' },
-                { emoji: '🏗', label: 'Production' },
-                { emoji: '⚓', label: 'Dock' },
-                { emoji: '👥', label: 'Teams' },
-              ].map(({ emoji, label }) => (
-                <span
-                  key={label}
-                  className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
-                >
-                  <span aria-hidden="true">{emoji}</span> {label}
-                </span>
-              ))}
-            </div>
-
-            {/* Waitlist form */}
-            <div className="mt-10">
-              <WaitlistForm />
-            </div>
-
-            {/* Secondary CTA */}
-            <div className="mt-4">
-              <Button
-                size="sm"
-                variant="ghost"
-                asChild
-                className="text-[#475569] hover:text-[#94a3b8] hover:bg-transparent h-9 px-0 text-xs transition-colors duration-150"
+          {/* Module pills */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {[
+              { emoji: '📦', label: 'Inventory' },
+              { emoji: '🚚', label: 'Fleet' },
+              { emoji: '📋', label: 'Projects' },
+              { emoji: '🏗', label: 'Production' },
+              { emoji: '⚓', label: 'Dock' },
+              { emoji: '👥', label: 'Teams' },
+            ].map(({ emoji, label }) => (
+              <span
+                key={label}
+                className="rounded-full border border-[#1e293b] bg-white/[0.03] px-3 py-1 text-xs text-[#94a3b8]"
               >
-                <a href="#features">See features →</a>
-              </Button>
-            </div>
+                <span aria-hidden="true">{emoji}</span> {label}
+              </span>
+            ))}
           </div>
 
-          {/* Right — dashboard mockup */}
-          <div className="overflow-hidden rounded-xl border border-[#1e293b] shadow-2xl shadow-black/60">
-            <DashboardMockup />
+          {/* Waitlist form */}
+          <div className="mt-10">
+            <WaitlistForm />
           </div>
+
+          {/* Secondary CTA */}
+          <div className="mt-4">
+            <Button
+              size="sm"
+              variant="ghost"
+              asChild
+              className="text-[#475569] hover:text-[#94a3b8] hover:bg-transparent h-9 px-0 text-xs transition-colors duration-150"
+            >
+              <a href="#features">See features →</a>
+            </Button>
+          </div>
+        </div>
+
+        {/* Dashboard mockup — below text */}
+        <div className="mt-16 overflow-hidden rounded-xl border border-[#1e293b] shadow-2xl shadow-black/60">
+          <DashboardMockup />
         </div>
       </div>
     </section>
