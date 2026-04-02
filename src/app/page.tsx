@@ -34,6 +34,11 @@ import {
   ArrowUp,
   Quote,
   Star,
+  Inbox,
+  Trash2,
+  Send,
+  Settings2,
+  Activity,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -483,15 +488,38 @@ function DashboardMockup() {
     { initials: 'JP', name: 'João Pedro', action: 'updated Audio inventory', time: '18 min' },
   ]
 
-  const navItems = [
-    { icon: LayoutDashboard, label: 'Home', active: true },
-    { icon: Package, label: 'Inventory' },
-    { icon: FolderKanban, label: 'Projects' },
-    { icon: Columns3, label: 'Boards' },
-    { icon: Truck, label: 'Fleet' },
-    { icon: Ticket, label: 'Tickets' },
-    { icon: BarChart3, label: 'Reports' },
-    { icon: Bot, label: 'Agent' },
+  const navGroups = [
+    {
+      label: 'Dashboard',
+      items: [
+        { icon: LayoutDashboard, label: 'Home', active: true },
+        { icon: Package, label: 'Inventário' },
+        { icon: FolderKanban, label: 'Projectos' },
+        { icon: Columns3, label: 'Boards' },
+        { icon: BarChart3, label: 'Relatórios' },
+        { icon: Truck, label: 'Frota' },
+        { icon: Container, label: 'Cais' },
+        { icon: Bot, label: 'Agent' },
+        { icon: Ticket, label: 'Tickets' },
+      ],
+    },
+    {
+      label: 'Inbox',
+      items: [
+        { icon: Inbox, label: 'Inbox' },
+        { icon: ClipboardList, label: 'Drafts' },
+        { icon: Trash2, label: 'Junk' },
+        { icon: Send, label: 'Sent' },
+      ],
+    },
+    {
+      label: 'Organização',
+      items: [
+        { icon: Settings2, label: 'Administração' },
+        { icon: Users, label: 'Membros' },
+        { icon: Activity, label: 'Logs' },
+      ],
+    },
   ]
 
   const statusColor: Record<string, string> = {
@@ -525,26 +553,37 @@ function DashboardMockup() {
         {/* Sidebar */}
         <div className="hidden w-48 shrink-0 flex-col border-r border-[#1a1f2e] bg-[#0d0f18] sm:flex">
           {/* Logo */}
-          <div className="flex h-12 items-center gap-2 border-b border-[#1a1f2e] px-4">
+          <div className="flex h-12 shrink-0 items-center gap-2 border-b border-[#1a1f2e] px-4">
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2563eb]">
               <Package className="h-3.5 w-3.5 text-white" />
             </div>
-            <span className="text-[12px] font-semibold text-[#0f172a]">Corely</span>
+            <span className="text-[12px] font-semibold text-white">Corely</span>
           </div>
 
-          {/* Nav */}
-          <div className="flex flex-col gap-0.5 p-2 pt-3">
-            <p className="mb-1 px-2 text-[9px] font-semibold uppercase tracking-widest text-[#cbd5e1]">Dashboard</p>
-            {navItems.map(({ icon: Icon, label, active }) => (
-              <div
-                key={label}
-                className={cn(
-                  'flex items-center gap-2 rounded-md px-2 py-1.5',
-                  active ? 'bg-slate-100 text-[#0f172a]' : 'text-[#94a3b8]',
-                )}
-              >
-                <Icon className="h-3 w-3 shrink-0" />
-                <span className="text-[10px] font-medium">{label}</span>
+          {/* Nav groups */}
+          <div className="flex flex-col gap-0 overflow-y-auto p-2 pt-2">
+            {navGroups.map((group) => (
+              <div key={group.label} className="mb-2">
+                {/* Group header */}
+                <div className="mb-0.5 flex items-center justify-between px-2 py-1">
+                  <span className="text-[9px] font-semibold uppercase tracking-widest text-[#475569]">
+                    {group.label}
+                  </span>
+                  <ChevronRight className="h-2.5 w-2.5 rotate-90 text-[#475569]" />
+                </div>
+                {/* Group items */}
+                {group.items.map(({ icon: Icon, label, active }) => (
+                  <div
+                    key={label}
+                    className={cn(
+                      'flex items-center gap-2 rounded-md px-2 py-1.5',
+                      active ? 'bg-[#1e2235] text-white' : 'text-[#64748b] hover:text-[#94a3b8]',
+                    )}
+                  >
+                    <Icon className="h-3 w-3 shrink-0" />
+                    <span className="text-[10px] font-medium">{label}</span>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
@@ -557,12 +596,12 @@ function DashboardMockup() {
             <div className="flex items-center gap-1.5 text-[10px] text-[#94a3b8]">
               <span>Dashboard</span>
               <ChevronRight className="h-2.5 w-2.5" />
-              <span className="text-white font-medium">Home</span>
+              <span className="font-medium text-[#0f172a]">Home</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white p-0.5">
                 <div className="flex h-5 w-5 items-center justify-center rounded bg-[#f1f5f9]">
-                  <Sun className="h-2.5 w-2.5 text-white" />
+                  <Sun className="h-2.5 w-2.5 text-[#64748b]" />
                 </div>
               </div>
               <div className="relative flex h-6 w-6 items-center justify-center rounded-md hover:bg-[#f1f5f9]">
@@ -576,7 +615,7 @@ function DashboardMockup() {
           <div className="flex-1 overflow-hidden p-4 space-y-3">
             {/* Page title */}
             <div>
-              <p className="text-[13px] font-semibold text-white">Good afternoon, Alex</p>
+              <p className="text-[13px] font-semibold text-[#0f172a]">Good afternoon, Alex</p>
               <p className="text-[10px] text-[#94a3b8]">Monday, March 30</p>
             </div>
 
@@ -589,12 +628,12 @@ function DashboardMockup() {
                     <div className="flex items-start justify-between">
                       <div>
                         <p className="text-[9px] text-[#94a3b8] leading-tight">{k.label}</p>
-                        <p className="mt-0.5 text-[18px] font-semibold tabular-nums leading-none" style={{ color: k.value === '3' ? '#ef4444' : 'white' }}>
+                        <p className="mt-0.5 text-[18px] font-semibold tabular-nums leading-none" style={{ color: k.value === '3' ? '#ef4444' : '#0f172a' }}>
                           {/^\d+$/.test(k.value) ? (
                             <NumberTicker value={Number(k.value)} />
                           ) : k.value}
                         </p>
-                        <p className="mt-1 text-[8px] text-[#cbd5e1] leading-tight">{k.sub}</p>
+                        <p className="mt-1 text-[8px] text-[#94a3b8] leading-tight">{k.sub}</p>
                       </div>
                       <div className="rounded-md bg-slate-100 p-1.5">
                         <Icon className="h-3 w-3" style={{ color: k.iconColor }} />
