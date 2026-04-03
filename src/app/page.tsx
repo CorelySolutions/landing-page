@@ -445,12 +445,6 @@ function HeroSection() {
 
         {/* Dashboard mockup — below text */}
         <div className="relative mt-16">
-          {/* Subtle top glow under the screenshot */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 h-20 w-3/4 rounded-full opacity-30 blur-2xl"
-            style={{ background: 'radial-gradient(ellipse at center, #3b82f6 0%, transparent 100%)' }}
-          />
           <div className="overflow-hidden rounded-2xl border border-[#e2e8f0] shadow-2xl shadow-slate-300/60">
             <DashboardMockup />
           </div>
@@ -2340,9 +2334,9 @@ function Footer() {
       { label: 'Contact', href: '#waitlist' },
     ],
     Legal: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Cookie Policy', href: '/cookie-policy' },
     ],
   }
 
