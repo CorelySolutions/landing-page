@@ -254,14 +254,42 @@ function BackToTop() {
 
 // ─── Waitlist form ────────────────────────────────────────────────
 
+function sanitizeEmail(raw: string): string {
+  return raw
+    .trim()
+    .toLowerCase()
+    .replace(/[<>'";&\\]/g, '')
+    .slice(0, 254)
+}
+
+const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
 function WaitlistForm() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const lastSubmitRef = useRef(0)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email.trim()) return
+    setError('')
+
+    const sanitized = sanitizeEmail(email)
+    if (!sanitized) return
+
+    if (!EMAIL_RE.test(sanitized)) {
+      setError('Please enter a valid email address.')
+      return
+    }
+
+    const now = Date.now()
+    if (now - lastSubmitRef.current < 5000) {
+      setError('Please wait a few seconds before trying again.')
+      return
+    }
+    lastSubmitRef.current = now
+
     setLoading(true)
     try {
       const res = await fetch(
@@ -269,10 +297,13 @@ function WaitlistForm() {
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email: sanitized }),
         },
       )
       if (res.ok || res.status === 409) setSubmitted(true)
+      else setError('Something went wrong. Please try again.')
+    } catch {
+      setError('Network error. Please check your connection.')
     } finally {
       setLoading(false)
     }
@@ -297,7 +328,7 @@ function WaitlistForm() {
           type="email"
           required
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.replace(/[<>]/g, ''))}
           placeholder="your@email.com"
           className="h-11 flex-1 rounded-lg border border-[#e2e8f0] bg-slate-100 px-4 text-sm text-[#0f172a] placeholder-[#94a3b8] outline-none transition-colors duration-150 focus:border-[#3b82f6]/60 focus:ring-1 focus:ring-[#2563eb]/30"
         />
@@ -316,6 +347,9 @@ function WaitlistForm() {
           )}
         </button>
       </div>
+      {error && (
+        <p className="mt-2 text-xs text-red-500">{error}</p>
+      )}
       <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 sm:justify-start">
         <span className="flex items-center gap-1.5 text-xs text-[#94a3b8]">
           <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[#2563eb]" />
