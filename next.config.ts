@@ -34,7 +34,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://*.corely.io http://localhost:3000",
+      "connect-src 'self' https://*.corely.io https://*.onrender.com http://localhost:3000",
       "frame-ancestors 'self'",
       "base-uri 'self'",
       "form-action 'self'",
