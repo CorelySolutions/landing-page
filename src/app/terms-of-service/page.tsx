@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Package, ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Terms of Service — Corely',
@@ -186,9 +187,7 @@ export default function TermsOfServicePage() {
             href="/"
             className="flex items-center gap-2.5 opacity-90 transition-opacity duration-150 hover:opacity-100"
           >
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#2563eb]">
-              <Package className="h-4 w-4 text-white" />
-            </div>
+            <Image src="/CoreLogonoBG.png" alt="Corely" width={36} height={36} className="rounded-lg" />
             <span className="text-sm font-semibold text-[#0f172a]">Corely</span>
           </Link>
 

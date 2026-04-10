@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import React, { useState, useEffect, useRef, forwardRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import {
@@ -135,9 +136,7 @@ function LandingNav() {
           href="/"
           className="flex items-center gap-2.5 opacity-90 transition-opacity duration-150 hover:opacity-100"
         >
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#2563eb]">
-            <Package className="h-4 w-4 text-white" />
-          </div>
+          <Image src="/CoreLogonoBG.png" alt="Corely" width={36} height={36} className="rounded-lg" />
           <span className="text-sm font-semibold text-[#0f172a]">Corely</span>
         </Link>
 
@@ -582,8 +581,8 @@ function DashboardMockup() {
         <div className="hidden w-48 shrink-0 flex-col border-r border-[#1a1f2e] bg-[#0d0f18] sm:flex">
           {/* Logo */}
           <div className="flex h-12 shrink-0 items-center gap-2 border-b border-[#1a1f2e] px-4">
-            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2563eb]">
-              <Package className="h-3.5 w-3.5 text-white" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-white">
+              <Image src="/CoreLogonoBG.png" alt="Corely" width={32} height={32} />
             </div>
             <span className="text-[12px] font-semibold text-white">Corely</span>
           </div>
@@ -2381,9 +2380,7 @@ function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#2563eb]">
-                <Package className="h-3.5 w-3.5 text-white" />
-              </div>
+              <Image src="/CoreLogonoBG.png" alt="Corely" width={36} height={36} className="rounded-md" />
               <span className="text-sm font-semibold text-[#0f172a]">Corely Solution</span>
             </div>
             <p className="text-xs leading-relaxed text-[#94a3b8]">
