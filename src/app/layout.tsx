@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={plusJakartaSans.variable}>
-      <body>{children}</body>
+    <html lang="en" className={plusJakartaSans.variable} style={{ colorScheme: 'light' }}>
+      <body style={{ backgroundColor: '#ffffff' }}>{children}</body>
     </html>
   )
 }
